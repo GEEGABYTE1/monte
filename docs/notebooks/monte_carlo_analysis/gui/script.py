@@ -209,3 +209,41 @@ def run_simulation(number_of_simulations):
     
     return dispersion_results
 
+
+number_of_simulations = st.number_input(
+    "Number of Simulations",
+    min_value = 1,
+    max_value = 1000,
+    value = 100,
+    step = 1,
+    help="Enter the number of simulations to run"
+)
+
+
+if st.button("Run Simulations"):
+    results = run_simulation(number_of_simulations)
+
+    # Display summary statistics
+    st.subheader("Summary Statistics")
+    summary_stats = {
+        "out_of_rail_time": ("Out of Rail Time (s)", results["out_of_rail_time"]),
+        "out_of_rail_velocity": ("Out of Rail Velocity (m/s)", results["out_of_rail_velocity"]),
+        "apogee_time": ("Apogee Time (s)", results["apogee_time"]),
+        "apogee_altitude": ("Apogee Altitude (m)", results["apogee_altitude"]),
+        "impact_time": ("Impact Time (s)", results["impact_time"]),
+        "impact_x": ("Impact X (m)", results["impact_x"]),
+        "impact_y": ("Impact Y (m)", results["impact_y"]),
+    }
+    
+    for key, (label, data) in summary_stats.items():
+        st.write(f"**{label}:** Mean = {np.mean(data):.2f}, Std = {np.std(data):.2f}")
+
+    # Plot histograms
+    st.subheader("Histograms")
+    for key, (label, data) in summary_stats.items():
+        fig, ax = plt.subplots()
+        ax.hist(data, bins=30, edgecolor='k', alpha=0.7)
+        ax.set_title(f"{label} Distribution")
+        ax.set_xlabel(label)
+        ax.set_ylabel("Frequency")
+        st.pyplot(fig)
