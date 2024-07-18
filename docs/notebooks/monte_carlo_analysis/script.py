@@ -20,6 +20,7 @@ mpl.rcParams["legend.fontsize"] = 14
 mpl.rcParams["figure.titlesize"] = 14
 
 st.title("Monte Carlo Rocket Sim GUI for RocketPy")
+st.write("Please set your inputs **(on left)** before running simulation :)")
 
 rocket_mass = 7.257
 rocket_mass_std = 0.001
@@ -712,7 +713,7 @@ if st.button("Run Simulation"):
         impact_y = np.array(dispersion_results["impact_y"])
 
         def eigsorted(cov):
-            vals, vecs = np.lingalg.eigh(cov)
+            vals, vecs = np.linalg.eigh(cov)
             order = vals.argsort()[::-1]
             return vals[order], vecs[:, order]
         
@@ -753,5 +754,48 @@ if st.button("Run Simulation"):
             apogeeEll.set_facecolor((0, 1, 0, 0.2))
             ax.add_artist(apogeeEll)
 
-
+        fig =plt.figure(num=None, figsize=(8, 6), dpi=150, facecolor="w", edgecolor="k")
+        ax = plt.subplot(111)
         
+        #launch point
+        plt.scatter(0, 0, s=30, marker="*", color="black", label="Launch Point")
+       
+        #  apogee points
+        plt.scatter(
+            apogee_x, apogee_y, s=5, marker="^", color="green", label="Simulated Apogee"
+        )
+        #  impact points
+        plt.scatter(
+            impact_x, impact_y, s=5, marker="v", color="blue", label="Simulated Landing Point"
+        )
+        #  real landing point
+        plt.scatter(
+            411.89, -61.07, s=20, marker="X", color="red", label="Measured Landing Point"
+        )
+
+        plt.legend()
+        ax.set_title(
+            "1$\sigma$, 2$\sigma$ and 3$\sigma$ Dispersion Ellipses: Apogee and Lading Points"
+        )
+
+        ax.set_ylabel("North (m)")
+        ax.set_xlabel("East (m)")
+
+        dx = 0
+        dy = 0
+
+        plt.imshow(img, zorder=0, extent=[-1000 - dx, 1000 - dx, -1000 - dy, 1000 - dy])
+        plt.axhline(0, color="black", linewidth=0.5)
+        plt.axvline(0, color="black", linewidth=0.5)
+        plt.xlim(-100, 700)
+        plt.ylim(-300, 300)
+
+        plt.savefig(str(filename) + ".pdf", bbox_inches="tight", pad_inches=0)
+        plt.savefig(str(filename) + ".svg", bbox_inches="tight", pad_inches=0)
+        st.pyplot(fig)
+    
+footer = """
+---
+"""
+st.markdown(footer)
+st.markdown("<i><p style='text-align: center;'>Made by <a href='www.jaivalpatel.com'>Jaival Patel</a> with ❤️</p></i>", unsafe_allow_html=True)
