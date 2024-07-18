@@ -25,84 +25,144 @@ rocket_mass = st.sidebar.number_input("Rocket Mass Mean (kg)", value=7.257, step
 rocket_mass_std = st.sidebar.number_input("Rocket Mass Std Dev (kg)", value=0.001, step=0.01)
 rocket_inertia_11 = st.sidebar.number_input("Rocket's Inertia Moment Perpendicular to its Axis (kg*m^2) ", value=3.675, step=0.01)
 rocket_inertia_11_std = st.sidebar.number_input("Rocket's Inertia Moment Perpendicular to its Axis  Std (kg*m^2)", value=0.03675, step=0.01)
-
-
+rocket_inertia_33 = st.sidebar.number_input("Rocket's Inertia Moment Relative to its Axis (kg*m^2) ", value=0.007, step=0.01)
+rocket_inertia_33_std = st.sidebar.number_input("Rocket's Inertia Moment Relative to its Axis  Std (kg*m^2)", value=0.00007, step=0.01)
+motor_dry_mass = st.sidebar.number_input("Motor Dry Mass without Propellant (kg)", value=1.000, step=0.01)
+motor_dry_mass_std = st.sidebar.number_input("Motor Dry Mass without Propellant Std (kg)", value=0.001, step=0.01)
+motor_inertia_11 = st.sidebar.number_input("Motor's Dry Inertia Moment Perpendicular to its Axis (kg*m^2)", value=1.675, step=0.01)
+motor_intertia_11_std =  st.sidebar.number_input("Motor's Dry Inertia Moment Perpendicular to its Axis (kg*m^2) ", value=0.01675, step=0.01)
+motor_inertia_33 = st.sidebar.number_input("Motor's Dry Inertia Moment Relative to its Axis (kg*m^2)", value=0.003, step=0.01)
+motor_intertia_33_std =  st.sidebar.number_input("Motor's Dry Inertia Moment Relative to its Axis (kg*m^2) ", value=0.00003, step=0.01)
+motor_dry_mass_position = st.sidebar.number_input("Distance between Rocket's Center of Dry Mass and motor's center of dry mass (m)".title(), value=0.5, step=0.01)
+motor_dry_mass_position_std = st.sidebar.number_input("Distance between Rocket's Center of Dry Mass and motor's center of dry mass Std (m)".title(), value=0.001, step=0.01)
+impulse = st.sidebar.number_input("Motor total impulse (N*s)".title(), value=1415.15, step=0.01)
+impulse_std = st.sidebar.number_input("Motor total impulse Std (N*s)".title(), value=35.3, step=0.01)
+burn_time = st.sidebar.number_input("Motor burn out time (s)".title(), value=5.274, step=0.01)
+burn_time_std = st.sidebar.number_input("Motor burn out time (s) Std".title(), value=1, step=0.01)
+nozzle_radius = st.sidebar.number_input("Motor nozzle radius (m)".title(), value=21.642, step=0.01)
+nozzle_radius_std = st.sidebar.number_input("Motor nozzle radius Std (m)".title(), value=0.5, step=0.01)
+throat_radius = st.sidebar.number_input("Motor's throat radius (m)".title(), value=8, step=0.01)
+throat_radius_std = st.sidebar.number_input("Motor's throat radius Std(m)".title(), value=0.5, step=0.01)
+grain_separation = st.sidebar.number_input("Motor's grain separation (axial distance between two grains) (m)".title(), value=6, step=0.01)
+grain_separation_std = st.sidebar.number_input("Motor's grain separation (axial distance between two grains) Std (m)".title(), value=1, step=0.01)
+grain_density = st.sidebar.number_input("Motor's grain density (kg/m^3)".title(), value=1707, step=0.01)
+grain_density_std = st.sidebar.number_input("Motor's grain density Std (kg/m^3)".title(), value=50, step=0.01)
+grain_outer_radius = st.sidebar.number_input("Motor's grain outer radius (m)".title(), value=21.4, step=0.01)
+grain_outer_radius_std = st.sidebar.number_input("Motor's grain outer radius Std (m)".title(), value=0.375, step=0.01)
+grain_initial_inner_radius = st.sidebar.number_input("Motor's grain inner radius (m)".title(), value=9.65, step=0.01)
+grain_initial_inner_radius_std = st.sidebar.number_input("Motor's grain inner radius Std (m)".title(), value=0.375, step=0.01)
+grain_initial_height = st.sidebar.number_input("Motor's grain height (m)".title(), value=120, step=0.01)
+grain_initial_height_std = st.sidebar.number_input("Motor's grain height Std (m)".title(), value=1, step=0.01)
+radius = st.sidebar.number_input("Rocket's radius (kg*m^2)".title(), value=40.45, step=0.01)
+radius_std = st.sidebar.number_input("Rocket's radius Std (kg*m^2)".title(), value=0.001, step=0.01)
+nozzle_position = st.sidebar.number_input("Distance between rocket's center of dry mass and nozzle exit plane (m) (negative)".title(), value=-1.024, step=0.01)
+nozzle_position_std = st.sidebar.number_input("Distance between rocket's center of dry mass and nozzle exit plane Std (m) (negative)".title(), value=0.001, step=0.01)
+power_off_drag = st.sidebar.number_input("Multiplier for rocket's drag curve. Usually has a mean value of 1 and a uncertainty of 5% to 10%".title(), value=0.9081, step=0.01)
+power_off_drag_std = st.sidebar.number_input("Multiplier for rocket's drag curve Std".title(), value=0.033, step=0.01)
+power_on_drag = st.sidebar.number_input("Multiplier for rocket's drag curve. Usually has a mean value of 1 and a uncertainty of 5% to 10%".title(), value=0.9081, step=0.01)
+power_on_drag_std = st.sidebar.number_input("Multiplier for rocket's drag curve Std".title(), value=0.033, step=0.01)
+nose_length = st.sidebar.number_input("Rocket's nose cone length (m)".title(), value=0.274, step=0.01)
+nose_length_std = st.sidebar.number_input("Rocket's nose cone length Std (m)".title(), value=0.001, step=0.01)
+nose_distance_to_CM = st.sidebar.number_input("Axial distance between rocket's center of dry mass and nearest point in its nose cone (m)".title(), value=1.134, step=0.01)
+nose_distance_to_CM_std = st.sidebar.number_input("Axial distance between rocket's center of dry mass and nearest point in its nose cone Std (m)".title(), value=0.001, step=0.01)
+fin_span  = st.sidebar.number_input("Fin span (m)".title(), value=0.077, step=0.01)
+fin_span_std = st.sidebar.number_input("Fin span Std (m)".title(), value=0.0005, step=0.01)
+fin_root_chord = st.sidebar.number_input("Fin Root Chord (m)".title(), value=0.058, step=0.01)
+fin_root_chord_std = st.sidebar.number_input("Fin Root Chord Std ".title(), value=0.0005, step=0.01)
+fin_tip_chord = st.sidebar.number_input("Fin Tip Chord (m)".title(), value=0.018, step=0.01)
+fin_tip_chord_std = st.sidebar.number_input("Fin Tip Chord Std (m)".title(), value=0.0005, step=0.01)
+fin_distance_to_CM = st.sidebar.number_input("Axial distance between rocket's center of dry mass and nearest point in its fin (m)".title(), value=-0.906, step=0.01)
+fin_distance_to_CM_std = st.sidebar.number_input("Axial distance between rocket's center of dry mass and nearest point in its fin Std (m)".title(), value=0.001, step=0.01)
+inclination = st.sidebar.number_input("Launch rail inclination angle relative to the horizontal plane (degrees)".title(), value=84.7, step=0.01)
+inclination_std = st.sidebar.number_input("Launch rail inclination angle relative to the horizontal plane Std (degrees)".title(), value=1, step=0.01)
+heading = st.sidebar.number_input("Launch rail heading relative to north (degrees)".title(), value=53, step=0.01)
+heading_std = st.sidebar.number_input("Launch rail heading relative to north Std (degrees)".title(), value=2, step=0.01)
+rail_length = st.sidebar.number_input("Launch rail length (m)".title(), value=5.7, step=0.01)
+rail_length_std = st.sidebar.number_input("Launch rail length Std (m)".title(), value=0.0005, step=0.01)
+cd_s_drogue = st.sidebar.number_input("Drag coefficient times reference area for the drogue chute (m^2)".title(), value=0.349, step=0.01)
+cd_s_drogue_std = st.sidebar.number_input("Drag coefficient times reference area for the drogue chute Std (m^2)".title(), value=0.07, step=0.01)
+lag_rec = st.sidebar.number_input("Time delay between parachute ejection signal is detected and parachute is inflated (s)".title(), value=1, step=0.01)
+lag_rec_std = st.sidebar.number_input("Time delay between parachute ejection signal is detected and parachute is inflated Std (s)".title(), value=0.5, step=0.01)
+lag_se = st.sidebar.number_input("Time delay between sensor signal is received and ejection signal is fired (s)".title(), value=0.73, step=0.01)
+lag_se_std = st.sidebar.number_input("Time delay between sensor signal is received and ejection signal is fired Std (s)".title(), value=0.16, step=0.01)
+grains_center_of_mass_position = st.sidebar.number_input("Distance between rocket's center of dry mass and and center of propellant mass (m) (negative)".title(), value=-0.73, step=0.01)
+grains_center_of_mass_position_std = st.sidebar.number_input("Distance between rocket's center of dry mass and and center of propellant mass Std (m) (negative)".title(), value=0.001, step=0.01)
 if st.button("Run Simulation"): 
         analysis_parameters = {
             # Mass Details
             # Rocket's dry mass without motor (kg) and its uncertainty (standard deviation)
-            "rocket_mass": (7.257, 0.001),
+            "rocket_mass": (rocket_mass, rocket_mass_std),
             # Rocket's inertia moment perpendicular to its axis (kg*m^2)
-            "rocket_inertia_11": (3.675, 0.03675),
+            "rocket_inertia_11": (rocket_inertia_11, rocket_inertia_11_std),
             # Rocket's inertia moment relative to its axis (kg*m^2)
-            "rocket_inertia_33": (0.007, 0.00007),
+            "rocket_inertia_33": (rocket_inertia_33, rocket_inertia_33_std),
             # Motors's dry mass without propellant (kg) and its uncertainty (standard deviation)
-            "motor_dry_mass": (1.000, 0.001),
+            "motor_dry_mass": (motor_dry_mass, motor_dry_mass_std),
             # Motor's dry inertia moment perpendicular to its axis (kg*m^2)
-            "motor_inertia_11": (1.675, 0.01675),
+            "motor_inertia_11": (motor_inertia_11, motor_intertia_11_std),
             # Motors's dry inertia moment relative to its axis (kg*m^2)
-            "motor_inertia_33": (0.003, 0.00003),
+            "motor_inertia_33": (motor_inertia_33, motor_intertia_33_std),
             # Distance between rocket's center of dry mass and motor's center of dry mass (m)
-            "motor_dry_mass_position": (0.5, 0.001),
+            "motor_dry_mass_position": (motor_dry_mass_position, motor_dry_mass_position_std),
             # Propulsion Details - run help(SolidMotor) for more information
             # Motor total impulse (N*s)
-            "impulse": (1415.15, 35.3),
+            "impulse": (impulse, impulse_std),
             # Motor burn out time (s)
-            "burn_time": (5.274, 1),
+            "burn_time": (burn_time, burn_time_std),
             # Motor's nozzle radius (m)
-            "nozzle_radius": (21.642 / 1000, 0.5 / 1000),
+            "nozzle_radius": (nozzle_radius / 1000, nozzle_radius_std / 1000),
             # Motor's nozzle throat radius (m)
-            "throat_radius": (8 / 1000, 0.5 / 1000),
+            "throat_radius": (throat_radius / 1000, throat_radius_std / 1000),
             # Motor's grain separation (axial distance between two grains) (m)
-            "grain_separation": (6 / 1000, 1 / 1000),
+            "grain_separation": (grain_separation / 1000, grain_separation_std / 1000),
             # Motor's grain density (kg/m^3)
-            "grain_density": (1707, 50),
+            "grain_density": (grain_density, grain_density_std),
             # Motor's grain outer radius (m)
-            "grain_outer_radius": (21.4 / 1000, 0.375 / 1000),
+            "grain_outer_radius": (grain_outer_radius / 1000, grain_outer_radius_std / 1000),
             # Motor's grain inner radius (m)
-            "grain_initial_inner_radius": (9.65 / 1000, 0.375 / 1000),
+            "grain_initial_inner_radius": (grain_initial_inner_radius / 1000, grain_initial_inner_radius_std / 1000),
             # Motor's grain height (m)
-            "grain_initial_height": (120 / 1000, 1 / 1000),
+            "grain_initial_height": (grain_initial_height / 1000, grain_initial_height_std / 1000),
             # Aerodynamic Details - run help(Rocket) for more information
             # Rocket's radius (kg*m^2)
-            "radius": (40.45 / 1000, 0.001),
+            "radius": (radius / 1000, radius_std),
             # Distance between rocket's center of dry mass and nozzle exit plane (m) (negative)
-            "nozzle_position": (-1.024, 0.001),
+            "nozzle_position": (nozzle_position, nozzle_position_std),
             # Distance between rocket's center of dry mass and and center of propellant mass (m) (negative)
-            "grains_center_of_mass_position": (-0.571, 0.001),
+            "grains_center_of_mass_position": (grains_center_of_mass_position, grains_center_of_mass_position_std),
             # Multiplier for rocket's drag curve. Usually has a mean value of 1 and a uncertainty of 5% to 10%
-            "power_off_drag": (0.9081 / 1.05, 0.033),
+            "power_off_drag": (power_off_drag / 1.05, power_off_drag_std),
             # Multiplier for rocket's drag curve. Usually has a mean value of 1 and a uncertainty of 5% to 10%
-            "power_on_drag": (0.9081 / 1.05, 0.033),
+            "power_on_drag": (power_on_drag / 1.05, power_on_drag_std),
             # Rocket's nose cone length (m)
-            "nose_length": (0.274, 0.001),
+            "nose_length": (nose_length, nose_length_std),
             # Axial distance between rocket's center of dry mass and nearest point in its nose cone (m)
-            "nose_distance_to_CM": (1.134, 0.001),
+            "nose_distance_to_CM": (nose_distance_to_CM, nose_distance_to_CM_std),
             # Fin span (m)
-            "fin_span": (0.077, 0.0005),
+            "fin_span": (fin_span, fin_span_std),
             # Fin root chord (m)
-            "fin_root_chord": (0.058, 0.0005),
+            "fin_root_chord": (fin_root_chord, fin_root_chord_std),
             # Fin tip chord (m)
-            "fin_tip_chord": (0.018, 0.0005),
+            "fin_tip_chord": (fin_tip_chord, fin_tip_chord_std),
             # Axial distance between rocket's center of dry mass and nearest point in its fin (m)
-            "fin_distance_to_CM": (-0.906, 0.001),
+            "fin_distance_to_CM": (fin_distance_to_CM, fin_distance_to_CM_std),
             # Launch and Environment Details - run help(Environment) and help(Flight) for more information
             # Launch rail inclination angle relative to the horizontal plane (degrees)
-            "inclination": (84.7, 1),
+            "inclination": (inclination, inclination_std),
             # Launch rail heading relative to north (degrees)
-            "heading": (53, 2),
+            "heading": (heading, heading_std),
             # Launch rail length (m)
-            "rail_length": (5.7, 0.0005),
+            "rail_length": (rail_length, rail_length_std),
             # Members of the ensemble forecast to be used
             "ensemble_member": list(range(10)),
             # Parachute Details - run help(Rocket) for more information
             # Drag coefficient times reference area for the drogue chute (m^2)
-            "cd_s_drogue": (0.349 * 1.3, 0.07),
+            "cd_s_drogue": (cd_s_drogue * 1.3, cd_s_drogue_std),
             # Time delay between parachute ejection signal is detected and parachute is inflated (s)
-            "lag_rec": (1, 0.5),
+            "lag_rec": (lag_rec, lag_rec_std),
             # Electronic Systems Details - run help(Rocket) for more information
             # Time delay between sensor signal is received and ejection signal is fired (s)
-            "lag_se": (0.73, 0.16),
+            "lag_se": (lag_se, lag_se_std),
         }
 
         def flight_settings(analysis_parameters, total_number):
