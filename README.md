@@ -22,7 +22,7 @@
 # monte 
 
 <div align="center">
-  <img src="./content/image1.png" width="600" height="400" />
+  <img src="./image1.png" width="600" height="400" />
 </div>
 
 A local GUI for rocket-trajectory calculated with monte-carlo sims through RocketPy.
@@ -40,12 +40,17 @@ streamlit run script.py
 ```
 
 <div align="center">
-  <img src="./content/image2.png" width="600" height="400" />
+  <img src="./image2.png" width="600" height="400" />
 </div>
+
+### simulation notes
+The user may use standard deviation as uncertainty as the simulation runs analogous to both assumptions.
+
+The user may also attempt to add their own variables if required from `script.py`.
 
 The current GUI runs on the files natively given in the `notebooks/monte_carlo_analysis` directory, but in the future, will be dynamic where the user can upload data files from their 6DOF automatically. Currently, the user may need to drag the file manually into the directory.
 
-The user is encouraged to read the `monte_carlo` tutorial from RocketPy which can be found here: https://github.com/RocketPy-Team/RocketPy/blob/master/docs/notebooks/monte_carlo_analysis/monte_carlo_analysis.ipynb 
+The user is encouraged to read the `monte_carlo` tutorial from RocketPy which can be found [here](https://github.com/RocketPy-Team/RocketPy/blob/master/docs/notebooks/monte_carlo_analysis/monte_carlo_analysis.ipynb).
 
 ## next steps
 - dynamic file importing right from GUI
