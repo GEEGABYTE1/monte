@@ -1,85 +1,64 @@
-import pygame
-import sys
-import matplotlib as mpl
+import streamlit as st 
+import numpy as np
+from numpy.random import normal, choice
+from time import process_time, time
+import matplotlib.pyplot as plt
+from rocketpy import Environment, SolidMotor, Rocket, Flight
 
-pygame.init()
+st.set_page_config(page_title='Rocket Sim', layout='wide')
+st.title("Rocket Flight Sim")
 
-screen_width = 1000
-screen_height = 1000
-screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('RocketPY GUI')
-
-running = True
-
-# Colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-
-# Image
-image_path = './images/rocket.jpg'
-image = pygame.image.load(image_path)
-
-# Desired image size
-desired_width = 400
-aspect_ratio = image.get_height() / image.get_width()
-scaled_image = pygame.transform.scale(image, (desired_width, int(desired_width * aspect_ratio)))
-image_rect = scaled_image.get_rect(center=(screen_width // 2, screen_height // 2))
-
-button_text = 'Get Started'
-
-# Fonts
-title_font = pygame.font.Font(None, 50)
-subtitle_font = pygame.font.Font(None, 32)
-text_font = pygame.font.Font(None, 18)
-button_font = pygame.font.Font(None, 36)
-
-# Rendering
-title_surface = title_font.render('Rocketpy GUI', True, BLACK)
-subtitle_surface = subtitle_font.render('Monte Carlo sims made easy', True, BLACK)
-text_surface = text_font.render('Made by Jaival Patel @ 2024', True, BLACK)
-button_text_surface = button_font.render(button_text, True, WHITE)
-
-
-
-title_rect = title_surface.get_rect(center=(screen_width // 2, 100))
-subtitle_rect = subtitle_surface.get_rect(center=(screen_width // 2, 150))
-text_rect = text_surface.get_rect(center=(screen_width // 2, 900))
-button_rect = pygame.Rect(400, 400, 200, 50)
-button_text_rect = button_text_surface.get_rect(center=button_rect.center)
-
-button_color = (0, 128, 0)
-
-
-button_clicked = False
+analysis_parameters = {
+    "rocket_mass": (7.257, 0.001),
+    "rocket_inertia_11": (3.675, 0.03675),
+    "rocket_inertia_33": (0.007, 0.00007),
+    "motor_dry_mass": (1.000, 0.001),
+    "motor_inertia_11": (1.675, 0.01675),
+    "motor_inertia_33": (0.003, 0.00003),
+    "motor_dry_mass_position": (0.5, 0.001),
+    "impulse": (1415.15, 35.3),
+    "burn_time": (5.274, 1),
+    "nozzle_radius": (21.642 / 1000, 0.5 / 1000),
+    "throat_radius": (8 / 1000, 0.5 / 1000),
+    "grain_separation": (6 / 1000, 1 / 1000),
+    "grain_density": (1707, 50),
+    "grain_outer_radius": (21.4 / 1000, 0.375 / 1000),
+    "grain_initial_inner_radius": (9.65 / 1000, 0.375 / 1000),
+    "grain_initial_height": (120 / 1000, 1 / 1000),
+    "radius": (40.45 / 1000, 0.001),
+    "nozzle_position": (-1.024, 0.001),
+    "grains_center_of_mass_position": (-0.571, 0.001),
+    "power_off_drag": (0.9081 / 1.05, 0.033),
+    "power_on_drag": (0.9081 / 1.05, 0.033),
+    "nose_length": (0.274, 0.001),
+    "nose_distance_to_CM": (1.134, 0.001),
+    "fin_span": (0.077, 0.0005),
+    "fin_root_chord": (0.058, 0.0005),
+    "fin_tip_chord": (0.018, 0.0005),
+    "fin_distance_to_CM": (-0.906, 0.001),
+    "inclination": (84.7, 1),
+    "heading": (53, 2),
+    "rail_length": (5.7, 0.0005),
+    "ensemble_member": list(range(10)),
+    "cd_s_drogue": (0.349 * 1.3, 0.07),
+    "lag_rec": (1, 0.5),
+    "lag_se": (0.73, 0.16),
+}
 
 
 
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1: #checking left mouse button clicked
-                if button_rect.collidepoint(event.pos):
-                    button_clicked = not button_clicked
+def flight_settings(analysis_parameters, total_number):
+    i = 0
+    while i < total_number:
+        flight_setting = {}
+        for parameter_key, parameter_value in analysis_parameters.items():
+            if isinstance(parameter_value, tuple):
+                flight_setting[parameter_key] = normal(*parameter_value)
+            else:
+                flight_setting[parameter_key] = normal(*parameter_value)
+        
+        if flight_setting["lag_rec"] < 0 or flight_setting["lag_se"] < 0:
+            continue 
+        i += 1
+        yield flight_setting
 
-    screen.fill(WHITE)
-
-
-    if button_clicked:
-        button_text_surface = button_font.render('Clicked!', True, WHITE)
-    else:      
-        screen.blit(scaled_image, image_rect)
-        screen.blit(title_surface, title_rect)
-        screen.blit(subtitle_surface, subtitle_rect)
-        screen.blit(text_surface, text_rect)
-        pygame.draw.rect(screen, button_color, button_rect)
-        screen.blit(button_text_surface, button_text_rect)
-        button_text_surface = button_font.render('Get Started!', True, WHITE)
-
-    button_text_rect = button_text_surface.get_rect(center=button_rect.center)
-
-    pygame.display.flip()
-
-pygame.quit()
-sys.exit()
