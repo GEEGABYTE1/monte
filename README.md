@@ -78,7 +78,7 @@ streamlit run script.py
 ```
 
 <div align="center">
-  <img src="./image2.png" width="600" height="400" />
+  <img src="./image2.png" width="1000" height="800" />
 </div>
 
 ### simulation notes
