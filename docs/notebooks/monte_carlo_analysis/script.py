@@ -9,6 +9,9 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import streamlit as st
 
+from imageio import imread 
+from matplotlib.patches import Ellipse
+
 
 mpl.rcParams["figure.figsize"] = [8, 5]
 mpl.rcParams["figure.dpi"] = 120
@@ -699,3 +702,56 @@ if st.button("Run Simulation"):
         ax.set_xlabel("Velocity m/s)")
         ax.set_ylabel("Number of Occurences")
         st.pyplot(fig)
+
+
+
+        img = imread("monte_carlo_analysis_inputs/Valetudo_basemap_final.jpg")
+        apogee_x = np.array(dispersion_results["apogee_x"])
+        apogee_y = np.array(dispersion_results["apogee_y"])
+        impact_x = np.array(dispersion_results["impact_x"])
+        impact_y = np.array(dispersion_results["impact_y"])
+
+        def eigsorted(cov):
+            vals, vecs = np.lingalg.eigh(cov)
+            order = vals.argsort()[::-1]
+            return vals[order], vecs[:, order]
+        
+        #error ellipses
+        impactCov = np.cov(impact_x, impact_y)
+        impactVals, impactVecs = eigsorted(impactCov)
+        impactTheta = np.degrees(np.arctan2(*impactVecs[:, 0][::-1]))
+        impactW, impactH = 2 * np.sqrt(impactVals)
+
+        impact_ellipses = []
+        for j in [1, 2, 3]:
+            impactEll = Ellipse(
+                xy=(np.mean(impact_x), np.mean(impact_y)),
+                width=impactW * j,
+                height=impactH * j,
+                angle=impactTheta,
+                color="black",
+            )
+            impactEll.set_facecolor((0, 0, 1, 0.2))
+            impact_ellipses.append(impactEll)
+            ax.add_artist(impactEll)
+    
+        apogeeCov = np.cov(apogee_x, apogee_y)
+        apogeeVals, apogeeVecs = eigsorted(apogeeCov)
+        apogeeTheta = np.degrees(np.arctan2(*apogeeVecs[:, 0][::-1]))
+        apogeeW, apogeeH = 2 * np.sqrt(apogeeVals)
+
+
+        #drawing 
+        for j in [1, 2, 3]:
+            apogeeEll = Ellipse(
+                xy=(np.mean(apogee_x), np.mean(apogee_y)),
+                width=apogeeW * j,
+                height=apogeeH * j,
+                angle=apogeeTheta,
+                color="black",
+            )
+            apogeeEll.set_facecolor((0, 1, 0, 0.2))
+            ax.add_artist(apogeeEll)
+
+
+        
