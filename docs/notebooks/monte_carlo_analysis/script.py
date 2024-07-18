@@ -775,7 +775,7 @@ if st.button("Run Simulation"):
 
         plt.legend()
         ax.set_title(
-            "1$\sigma$, 2$\sigma$ and 3$\sigma$ Dispersion Ellipses: Apogee and Lading Points"
+            "1$\sigma$, 2$\sigma$ and 3$\sigma$ Dispersion Ellipses: Apogee and Landing Points"
         )
 
         ax.set_ylabel("North (m)")
