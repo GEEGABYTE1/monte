@@ -38,29 +38,29 @@ motor_dry_mass_position_std = st.sidebar.number_input("Distance between Rocket's
 impulse = st.sidebar.number_input("Motor total impulse (N*s)".title(), value=1415.15, step=0.01)
 impulse_std = st.sidebar.number_input("Motor total impulse Std (N*s)".title(), value=35.3, step=0.01)
 burn_time = st.sidebar.number_input("Motor burn out time (s)".title(), value=5.274, step=0.01)
-burn_time_std = st.sidebar.number_input("Motor burn out time (s) Std".title(), value=1, step=0.01)
+burn_time_std = st.sidebar.number_input("Motor burn out time (s) Std".title(), value=1.00, step=0.01)
 nozzle_radius = st.sidebar.number_input("Motor nozzle radius (m)".title(), value=21.642, step=0.01)
 nozzle_radius_std = st.sidebar.number_input("Motor nozzle radius Std (m)".title(), value=0.5, step=0.01)
-throat_radius = st.sidebar.number_input("Motor's throat radius (m)".title(), value=8, step=0.01)
+throat_radius = st.sidebar.number_input("Motor's throat radius (m)".title(), value=8.00, step=0.01)
 throat_radius_std = st.sidebar.number_input("Motor's throat radius Std(m)".title(), value=0.5, step=0.01)
-grain_separation = st.sidebar.number_input("Motor's grain separation (axial distance between two grains) (m)".title(), value=6, step=0.01)
-grain_separation_std = st.sidebar.number_input("Motor's grain separation (axial distance between two grains) Std (m)".title(), value=1, step=0.01)
-grain_density = st.sidebar.number_input("Motor's grain density (kg/m^3)".title(), value=1707, step=0.01)
-grain_density_std = st.sidebar.number_input("Motor's grain density Std (kg/m^3)".title(), value=50, step=0.01)
+grain_separation = st.sidebar.number_input("Motor's grain separation (axial distance between two grains) (m)".title(), value=6.00, step=0.01)
+grain_separation_std = st.sidebar.number_input("Motor's grain separation (axial distance between two grains) Std (m)".title(), value=1.00, step=0.01)
+grain_density = st.sidebar.number_input("Motor's grain density (kg/m^3)".title(), value=1707.00, step=0.01)
+grain_density_std = st.sidebar.number_input("Motor's grain density Std (kg/m^3)".title(), value=50.00, step=0.01)
 grain_outer_radius = st.sidebar.number_input("Motor's grain outer radius (m)".title(), value=21.4, step=0.01)
 grain_outer_radius_std = st.sidebar.number_input("Motor's grain outer radius Std (m)".title(), value=0.375, step=0.01)
 grain_initial_inner_radius = st.sidebar.number_input("Motor's grain inner radius (m)".title(), value=9.65, step=0.01)
 grain_initial_inner_radius_std = st.sidebar.number_input("Motor's grain inner radius Std (m)".title(), value=0.375, step=0.01)
-grain_initial_height = st.sidebar.number_input("Motor's grain height (m)".title(), value=120, step=0.01)
-grain_initial_height_std = st.sidebar.number_input("Motor's grain height Std (m)".title(), value=1, step=0.01)
+grain_initial_height = st.sidebar.number_input("Motor's grain height (m)".title(), value=120.00, step=0.01)
+grain_initial_height_std = st.sidebar.number_input("Motor's grain height Std (m)".title(), value=1.00, step=0.01)
 radius = st.sidebar.number_input("Rocket's radius (kg*m^2)".title(), value=40.45, step=0.01)
 radius_std = st.sidebar.number_input("Rocket's radius Std (kg*m^2)".title(), value=0.001, step=0.01)
 nozzle_position = st.sidebar.number_input("Distance between rocket's center of dry mass and nozzle exit plane (m) (negative)".title(), value=-1.024, step=0.01)
 nozzle_position_std = st.sidebar.number_input("Distance between rocket's center of dry mass and nozzle exit plane Std (m) (negative)".title(), value=0.001, step=0.01)
 power_off_drag = st.sidebar.number_input("Multiplier for rocket's drag curve. Usually has a mean value of 1 and a uncertainty of 5% to 10%".title(), value=0.9081, step=0.01)
 power_off_drag_std = st.sidebar.number_input("Multiplier for rocket's drag curve Std".title(), value=0.033, step=0.01)
-power_on_drag = st.sidebar.number_input("Multiplier for rocket's drag curve. Usually has a mean value of 1 and a uncertainty of 5% to 10%".title(), value=0.9081, step=0.01)
-power_on_drag_std = st.sidebar.number_input("Multiplier for rocket's drag curve Std".title(), value=0.033, step=0.01)
+power_on_drag = st.sidebar.number_input("Multiplier for rocket's drag curve for ON drag".title(), value=0.90810, step=0.01)
+power_on_drag_std = st.sidebar.number_input("Multiplier for rocket's drag curve for ON drag Std".title(), value=0.033, step=0.01)
 nose_length = st.sidebar.number_input("Rocket's nose cone length (m)".title(), value=0.274, step=0.01)
 nose_length_std = st.sidebar.number_input("Rocket's nose cone length Std (m)".title(), value=0.001, step=0.01)
 nose_distance_to_CM = st.sidebar.number_input("Axial distance between rocket's center of dry mass and nearest point in its nose cone (m)".title(), value=1.134, step=0.01)
@@ -73,16 +73,16 @@ fin_tip_chord = st.sidebar.number_input("Fin Tip Chord (m)".title(), value=0.018
 fin_tip_chord_std = st.sidebar.number_input("Fin Tip Chord Std (m)".title(), value=0.0005, step=0.01)
 fin_distance_to_CM = st.sidebar.number_input("Axial distance between rocket's center of dry mass and nearest point in its fin (m)".title(), value=-0.906, step=0.01)
 fin_distance_to_CM_std = st.sidebar.number_input("Axial distance between rocket's center of dry mass and nearest point in its fin Std (m)".title(), value=0.001, step=0.01)
-inclination = st.sidebar.number_input("Launch rail inclination angle relative to the horizontal plane (degrees)".title(), value=84.7, step=0.01)
-inclination_std = st.sidebar.number_input("Launch rail inclination angle relative to the horizontal plane Std (degrees)".title(), value=1, step=0.01)
-heading = st.sidebar.number_input("Launch rail heading relative to north (degrees)".title(), value=53, step=0.01)
-heading_std = st.sidebar.number_input("Launch rail heading relative to north Std (degrees)".title(), value=2, step=0.01)
+inclination = st.sidebar.number_input("Launch rail inclination angle relative to the horizontal plane (degrees)".title(), value=84.70, step=0.01)
+inclination_std = st.sidebar.number_input("Launch rail inclination angle relative to the horizontal plane Std (degrees)".title(), value=1.00, step=0.01)
+heading = st.sidebar.number_input("Launch rail heading relative to north (degrees)".title(), value=53.00, step=0.01)
+heading_std = st.sidebar.number_input("Launch rail heading relative to north Std (degrees)".title(), value=2.00, step=0.01)
 rail_length = st.sidebar.number_input("Launch rail length (m)".title(), value=5.7, step=0.01)
 rail_length_std = st.sidebar.number_input("Launch rail length Std (m)".title(), value=0.0005, step=0.01)
 cd_s_drogue = st.sidebar.number_input("Drag coefficient times reference area for the drogue chute (m^2)".title(), value=0.349, step=0.01)
 cd_s_drogue_std = st.sidebar.number_input("Drag coefficient times reference area for the drogue chute Std (m^2)".title(), value=0.07, step=0.01)
-lag_rec = st.sidebar.number_input("Time delay between parachute ejection signal is detected and parachute is inflated (s)".title(), value=1, step=0.01)
-lag_rec_std = st.sidebar.number_input("Time delay between parachute ejection signal is detected and parachute is inflated Std (s)".title(), value=0.5, step=0.01)
+lag_rec = st.sidebar.number_input("Time delay between parachute ejection signal is detected and parachute is inflated (s)".title(), value=1.00, step=0.01)
+lag_rec_std = st.sidebar.number_input("Time delay between parachute ejection signal is detected and parachute is inflated Std (s)".title(), value=0.50, step=0.01)
 lag_se = st.sidebar.number_input("Time delay between sensor signal is received and ejection signal is fired (s)".title(), value=0.73, step=0.01)
 lag_se_std = st.sidebar.number_input("Time delay between sensor signal is received and ejection signal is fired Std (s)".title(), value=0.16, step=0.01)
 grains_center_of_mass_position = st.sidebar.number_input("Distance between rocket's center of dry mass and and center of propellant mass (m) (negative)".title(), value=-0.73, step=0.01)
@@ -453,247 +453,249 @@ if st.button("Run Simulation"):
 
         # Print number of flights simulated
         N = len(dispersion_general_results)
-        print("Number of simulations: ", N)
+        st.write("Number of simulations: ", N)
 
-
-        print(
-            f'Out of Rail Time -         Mean Value: {np.mean(dispersion_results["out_of_rail_time"]):0.3f} s'
+        st.write(
+            f'Out of Rail Time - Mean Value: {np.mean(dispersion_results["out_of_rail_time"]):0.3f} s'
         )
-        print(
+        st.write(
             f'Out of Rail Time - Standard Deviation: {np.std(dispersion_results["out_of_rail_time"]):0.3f} s'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["out_of_rail_time"], bins=int(N**0.5))
-        plt.title("Out of Rail Time")
-        plt.xlabel("Time (s)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["out_of_rail_time"], bins=int(N**0.5))
+        ax.set_title("Out of Rail Time")
+        ax.set_xlabel("Time (s)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        print(
-            f'Out of Rail Velocity -         Mean Value: {np.mean(dispersion_results["out_of_rail_velocity"]):0.3f} m/s'
+        st.write(
+            f'Out of Rail Velocity - Mean Value: {np.mean(dispersion_results["out_of_rail_velocity"]):0.3f} m/s'
         )
-        print(
+        st.write(
             f'Out of Rail Velocity - Standard Deviation: {np.std(dispersion_results["out_of_rail_velocity"]):0.3f} m/s'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["out_of_rail_velocity"], bins=int(N**0.5))
-        plt.title("Out of Rail Velocity")
-        plt.xlabel("Velocity (m/s)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["out_of_rail_velocity"], bins=int(N**0.5))
+        ax.set_title("Out of Rail Velocity")
+        ax.set_xlabel("Velocity (m/s)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        print(
-            f'Apogee Time -         Mean Value: {np.mean(dispersion_results["apogee_time"]):0.3f} s'
+        st.write(
+            f'Apogee Time - Mean Value: {np.mean(dispersion_results["apogee_time"]):0.3f} s'
         )
-        print(
+        st.write(
             f'Apogee Time - Standard Deviation: {np.std(dispersion_results["apogee_time"]):0.3f} s'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["apogee_time"], bins=int(N**0.5))
-        plt.title("Apogee Time")
-        plt.xlabel("Time (s)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["apogee_time"], bins=int(N**0.5))
+        ax.set_title("Apogee Time")
+        ax.set_xlabel("Time (s)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        print(
-            f'Apogee Altitude -         Mean Value: {np.mean(dispersion_results["apogee_altitude"]):0.3f} m'
+        st.write(
+            f'Apogee Altitude - Mean Value: {np.mean(dispersion_results["apogee_altitude"]):0.3f} m'
         )
-        print(
+        st.write(
             f'Apogee Altitude - Standard Deviation: {np.std(dispersion_results["apogee_altitude"]):0.3f} m'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["apogee_altitude"], bins=int(N**0.5))
-        plt.title("Apogee Altitude")
-        plt.xlabel("Altitude (m)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["apogee_altitude"], bins=int(N**0.5))
+        ax.set_title("Apogee Altitude")
+        ax.set_xlabel("Altitude (m)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        # Real measured apogee for Valetudo = 860 m
-
-        print(
-            f'Apogee X Position -         Mean Value: {np.mean(dispersion_results["apogee_x"]):0.3f} m'
+        st.write(
+            f'Apogee X Position - Mean Value: {np.mean(dispersion_results["apogee_x"]):0.3f} m'
         )
-        print(
+        st.write(
             f'Apogee X Position - Standard Deviation: {np.std(dispersion_results["apogee_x"]):0.3f} m'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["apogee_x"], bins=int(N**0.5))
-        plt.title("Apogee X Position")
-        plt.xlabel("Apogee X Position (m)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["apogee_x"], bins=int(N**0.5))
+        ax.set_title("Apogee X Position")
+        ax.set_xlabel("Apogee X Position (m)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        print(
-            f'Apogee Y Position -         Mean Value: {np.mean(dispersion_results["apogee_y"]):0.3f} m'
+        st.write(
+            f'Apogee Y Position - Mean Value: {np.mean(dispersion_results["apogee_y"]):0.3f} m'
         )
-        print(
+        st.write(
             f'Apogee Y Position - Standard Deviation: {np.std(dispersion_results["apogee_y"]):0.3f} m'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["apogee_y"], bins=int(N**0.5))
-        plt.title("Apogee Y Position")
-        plt.xlabel("Apogee Y Position (m)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["apogee_y"], bins=int(N**0.5))
+        ax.set_title("Apogee Y Position")
+        ax.set_xlabel("Apogee Y Position (m)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        print(
-            f'Impact Time -         Mean Value: {np.mean(dispersion_results["impact_time"]):0.3f} s'
+        st.write(
+            f'Impact Time - Mean Value: {np.mean(dispersion_results["impact_time"]):0.3f} s'
         )
-        print(
+        st.write(
             f'Impact Time - Standard Deviation: {np.std(dispersion_results["impact_time"]):0.3f} s'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["impact_time"], bins=int(N**0.5))
-        plt.title("Impact Time")
-        plt.xlabel("Time (s)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["impact_time"], bins=int(N**0.5))
+        ax.set_title("Impact Time")
+        ax.set_xlabel("Time (s)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        print(
-            f'Impact X Position -         Mean Value: {np.mean(dispersion_results["impact_x"]):0.3f} m'
+        st.write(
+            f'Impact X Position - Mean Value: {np.mean(dispersion_results["impact_x"]):0.3f} m'
         )
-        print(
+        st.write(
             f'Impact X Position - Standard Deviation: {np.std(dispersion_results["impact_x"]):0.3f} m'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["impact_x"], bins=int(N**0.5))
-        plt.title("Impact X Position")
-        plt.xlabel("Impact X Position (m)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["impact_x"], bins=int(N**0.5))
+        ax.set_title("Impact X Position")
+        ax.set_xlabel("Impact X Position (m)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        print(
-            f'Impact Y Position -         Mean Value: {np.mean(dispersion_results["impact_y"]):0.3f} m'
+        st.write(
+            f'Impact Y Position - Mean Value: {np.mean(dispersion_results["impact_y"]):0.3f} m'
         )
-        print(
+        st.write(
             f'Impact Y Position - Standard Deviation: {np.std(dispersion_results["impact_y"]):0.3f} m'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["impact_y"], bins=int(N**0.5))
-        plt.title("Impact Y Position")
-        plt.xlabel("Impact Y Position (m)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["impact_y"], bins=int(N**0.5))
+        ax.set_title("Impact Y Position")
+        ax.set_xlabel("Impact Y Position (m)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        print(
-            f'Impact Velocity -         Mean Value: {np.mean(dispersion_results["impact_velocity"]):0.3f} m/s'
+        st.write(
+            f'Impact Velocity - Mean Value: {np.mean(dispersion_results["impact_velocity"]):0.3f} m/s'
         )
-        print(
+        st.write(
             f'Impact Velocity - Standard Deviation: {np.std(dispersion_results["impact_velocity"]):0.3f} m/s'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["impact_velocity"], bins=int(N**0.5))
-        plt.title("Impact Velocity")
-        # plt.grid()
-        plt.xlim(-35, 0)
-        plt.xlabel("Velocity (m/s)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["impact_velocity"], bins=int(N**0.5))
+        ax.set_title("Impact Velocity")
+        ax.set_xlim(-35, 0)
+        ax.set_xlabel("Velocity (m/s)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        print(
-            f'Initial Static Margin -             Mean Value: {np.mean(dispersion_results["initial_static_margin"]):0.3f} c'
+        st.write(
+            f'Initial Static Margin - Mean Value: {np.mean(dispersion_results["initial_static_margin"]):0.3f} c'
         )
-        print(
-            f'Initial Static Margin -     Standard Deviation: {np.std(dispersion_results["initial_static_margin"]):0.3f} c'
+        st.write(
+            f'Initial Static Margin - Standard Deviation: {np.std(dispersion_results["initial_static_margin"]):0.3f} c'
         )
 
-        print(
-            f'Out of Rail Static Margin -         Mean Value: {np.mean(dispersion_results["out_of_rail_static_margin"]):0.3f} c'
+        st.write(
+            f'Out of Rail Static Margin - Mean Value: {np.mean(dispersion_results["out_of_rail_static_margin"]):0.3f} c'
         )
-        print(
+        st.write(
             f'Out of Rail Static Margin - Standard Deviation: {np.std(dispersion_results["out_of_rail_static_margin"]):0.3f} c'
         )
 
-        print(
-            f'Final Static Margin -               Mean Value: {np.mean(dispersion_results["final_static_margin"]):0.3f} c'
+        st.write(
+            f'Final Static Margin - Mean Value: {np.mean(dispersion_results["final_static_margin"]):0.3f} c'
         )
-        print(
-            f'Final Static Margin -       Standard Deviation: {np.std(dispersion_results["final_static_margin"]):0.3f} c'
+        st.write(
+            f'Final Static Margin - Standard Deviation: {np.std(dispersion_results["final_static_margin"]):0.3f} c'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["initial_static_margin"], label="Initial", bins=int(N**0.5))
-        plt.hist(
-            dispersion_results["out_of_rail_static_margin"],
-            label="Out of Rail",
-            bins=int(N**0.5),
-        )
-        plt.hist(dispersion_results["final_static_margin"], label="Final", bins=int(N**0.5))
-        plt.legend()
-        plt.title("Static Margin")
-        plt.xlabel("Static Margin (c)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["initial_static_margin"], label="Initial", bins=int(N**0.5))
+        ax.hist(dispersion_results["out_of_rail_static_margin"], label="Out of Rail", bins=int(N**0.5))
+        ax.hist(dispersion_results["final_static_margin"], label="Final", bins=int(N**0.5))
+        ax.legend()
+        ax.set_title("Static Margin")
+        ax.set_xlabel("Static Margin (c)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        print(
-            f'Maximum Velocity -         Mean Value: {np.mean(dispersion_results["max_velocity"]):0.3f} m/s'
+        st.write(
+            f'Maximum Velocity - Mean Value: {np.mean(dispersion_results["max_velocity"]):0.3f} m/s'
         )
-        print(
+        st.write(
             f'Maximum Velocity - Standard Deviation: {np.std(dispersion_results["max_velocity"]):0.3f} m/s'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["max_velocity"], bins=int(N**0.5))
-        plt.title("Maximum Velocity")
-        plt.xlabel("Velocity (m/s)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["max_velocity"], bins=int(N**0.5))
+        ax.set_title("Maximum Velocity")
+        ax.set_xlabel("Velocity (m/s)")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        plt.figure()
-        plt.hist(dispersion_results["number_of_events"])
-        plt.title("Parachute Events")
-        plt.xlabel("Number of Parachute Events")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["number_of_events"])
+        ax.set_title("Parachute Events")
+        ax.set_xlabel("Number of Parachute Events")
+        ax.set_ylabel("Number of Occurrences")
+        st.pyplot(fig)
 
-        print(
-            f'Drogue Parachute Trigger Time -         Mean Value: {np.mean(dispersion_results["drogue_triggerTime"]):0.3f} s'
+        st.write(
+            f'Drogue Parachute Trigger Time - Mean Value: {np.mean(dispersion_results["drogue_triggerTime"]):0.3f} s'
         )
-        print(
+        st.write(
             f'Drogue Parachute Trigger Time - Standard Deviation: {np.std(dispersion_results["drogue_triggerTime"]):0.3f} s'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["drogue_triggerTime"], bins=int(N**0.5))
-        plt.title("Drogue Parachute Trigger Time")
-        plt.xlabel("Time (s)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
 
-        print(
+
+
+
+
+
+
+
+        fig, ax = plt.subplots()
+
+        plt.figure()
+        ax.hist(dispersion_results["drogue_triggerTime"], bins=int(N**0.5))
+        ax.set_title("Drogue Parachute Trigger Time")
+        ax.set_xlabel("Time (s)")
+        ax.set_ylabel("Number of Occurences")
+        st.pyplot(fig)
+
+        st.write(
             f'Drogue Parachute Fully Inflated Time -         Mean Value: {np.mean(dispersion_results["drogue_inflated_time"]):0.3f} s'
         )
-        print(
+        st.write(
             f'Drogue Parachute Fully Inflated Time - Standard Deviation: {np.std(dispersion_results["drogue_inflated_time"]):0.3f} s'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["drogue_inflated_time"], bins=int(N**0.5))
-        plt.title("Drogue Parachute Fully Inflated Time")
-        plt.xlabel("Time (s)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["drogue_inflated_time"], bins=int(N**0.5))
+        ax.set_title("Drogue Parachute Fully Inflated Time")
+        ax.set_xlabel("Time (s)")
+        ax.set_ylabel("Number of Occurences")
+        st.pyplot(fig)
 
-        print(
+        st.write(
             f'Drogue Parachute Fully Inflated Velocity -         Mean Value: {np.mean(dispersion_results["drogue_inflated_velocity"]):0.3f} m/s'
         )
-        print(
+        st.write(
             f'Drogue Parachute Fully Inflated Velocity - Standard Deviation: {np.std(dispersion_results["drogue_inflated_velocity"]):0.3f} m/s'
         )
 
-        plt.figure()
-        plt.hist(dispersion_results["drogue_inflated_velocity"], bins=int(N**0.5))
-        plt.title("Drogue Parachute Fully Inflated Velocity")
-        plt.xlabel("Velocity m/s)")
-        plt.ylabel("Number of Occurences")
-        plt.show()
+        fig, ax = plt.subplots()
+        ax.hist(dispersion_results["drogue_inflated_velocity"], bins=int(N**0.5))
+        ax.set_title("Drogue Parachute Fully Inflated Velocity")
+        ax.set_xlabel("Velocity m/s)")
+        ax.set_ylabel("Number of Occurences")
+        st.pyplot(fig)
